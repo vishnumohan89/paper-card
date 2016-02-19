@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+    
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+    <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../bower_components/paper-material/paper-material.html">
+</head>
+
+<body>
+    <dom-module id="paper-card">
+        <style>
+            :host {
+                display: inline-block;
+                margin: 8px 0 0 8px;
+                font-size: 14px;
+                text-align: justify;
+                line-height: 10px;
+                --paper-fab-background: var(--drawer-menu-color);
+            }
+            
+            .picture {
+                position: relative;
+            }
+            
+            .picture img {
+                border-top-right-radius: 2px;
+                border-top-left-radius: 2px;
+                width: 100%;
+            }
+            
+            paper-material {
+                border-radius: 2px;
+                background-color: white;
+            }
+            
+            .legend {
+                position: absolute;
+                background: rgba(0, 0, 0, 0.4);
+                bottom: 0px;
+                color: white;
+                height: 50px;
+                padding: 0 10px;
+                left: 0;
+                right: 0;
+            }
+            
+            .content::content {
+                padding: 24px 16px 8px;
+                font-weight: 300;
+                color: var(--secondary-text-color);
+                line-height: 24px;
+            }
+            
+            paper-fab {
+                position: absolute;
+                right: 10px;
+                bottom: -18px;
+                z-index: 10;
+            }
+            
+            ::content.buttons {
+                margin-top: 8px;
+            }
+            
+            ::content paper-button,
+            ::content paper-icon-button {
+                font-weight: 500;
+                color: var(--accent-color);
+            }
+        </style>
+        <template>
+            <paper-material elevation={{elevation}}>
+                <div class="layout vertical">
+                    <template is="dom-if" if={{img}}>
+                        <div class="picture">
+                            <img src="{{img}}" alt="">
+                            <template is="dom-if" if="{{legend}}">
+                            <div class="legend horizontal layout center">
+                                <span>{{legend}}</span>
+                                <paper-fab mini icon="{{icon}}"></paper-fab>
+                            </div>
+                            </template>
+                        </div>
+                    </template>
+                    <div class="content">
+                        <content></content>
+                    </div>
+                </div>
+            </paper-material>
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: 'paper-card',
+            properties: {
+                width: {
+                    type: Number,
+                    observer: "_widthObserver",
+                }
+            },
+            
+            _widthObserver: function(data) {
+                this.style.width = data + "px";
+                this.querySelector(".content").width = data + "px";
+            }
+        });
+        
+    </script>
+</body>
+
+</html>

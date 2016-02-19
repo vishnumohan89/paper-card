@@ -1,0 +1,25 @@
+{
+  "name": "paper-card",
+  "version": "0.0.0",
+  "authors": [
+    "Vishnu Mohan <vishnu.mohan@triassicsolutions.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-card": "Polymer/paper-card",
+    "paper-material": "PolymerElements/paper-material#~1.0.2",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.3",
+    "paper-fab": "PolymerElements/paper-fab#~1.0.4",
+    "iron-icon": "PolymerElements/iron-icon#~1.0.4"
+  },
+  "resolutions": {
+    "polymer": "^1.0.0"
+  }
+}
